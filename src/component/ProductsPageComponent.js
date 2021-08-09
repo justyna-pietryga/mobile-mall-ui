@@ -3,6 +3,8 @@ import {Button, Col, Container, Row} from 'react-bootstrap';
 import {connect} from "react-redux"
 import {getCategory, clearCategories, getStandardCategories} from "../redux/Categories/categories.actions"
 import {ProductFilterContainer} from "./products/ProductFilter";
+import {ProductContainer} from "./products/ProductComponent";
+import {ProductsContainer} from "./products/ProductsComponent";
 
 class ProductsPageComponent extends React.Component {
 
@@ -48,13 +50,13 @@ class ProductsPageComponent extends React.Component {
 
     render() {
         return (
-            <Container style={{marginTop: "2%", marginLeft: "0%"}}>
+            <Container fluid style={{marginTop: "2%", marginLeft: "0%", width: "100%"}}>
                 <Row>
-                    <Col md={4}>
+                    <Col lg={3}>
                         <ProductFilterContainer onChangeCategories={this.onChangeCategories}/>
                     </Col>
-                    <Col md={8}>
-                        Content
+                    <Col lg={9}>
+                        <ProductsContainer/>
                     </Col>
                 </Row>
             </Container>
