@@ -3,14 +3,17 @@ import {
     CLEAR_CATEGORIES,
     GET_STANDARD_CATEGORIES,
     ADD_STANDARD_CATEGORIES,
-    UPDATE_CATEGORY_WITH_STANDARD
+    UPDATE_CATEGORY_WITH_STANDARD,
+    ADD_PRODUCT,
+    CLEAR_PRODUCTS
 } from './categories.types'
 import _ from "lodash";
 
 const INITIAL_STATE = {
     categories: [],
     standardCategories: [],
-    categoriesWithStandard: new Map()
+    categoriesWithStandard: new Map(),
+    products: []
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -25,6 +28,11 @@ const reducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 categories: [],
             }
+        case CLEAR_PRODUCTS:
+            return {
+                ...state,
+                products: [],
+            }
         case GET_STANDARD_CATEGORIES:
             return {
                 ...state,
@@ -37,13 +45,19 @@ const reducer = (state = INITIAL_STATE, action) => {
                 standardCategories: !_.includes(standardNames, action.payload) ?
                     [...state.standardCategories, {name: action.payload}] : [...state.standardCategories],
             }
+
+        case ADD_PRODUCT:
+            return {
+                ...state,
+                products: [...state.products, {...action.payload}],
+            }
+
         case UPDATE_CATEGORY_WITH_STANDARD:
             const stateCategories = state.categories
                 .map(category => {
-                    if(category.name === action.payload.name){
+                    if (category.name === action.payload.name) {
                         return action.payload
-                    }
-                    else {
+                    } else {
                         return category
                     }
                 })

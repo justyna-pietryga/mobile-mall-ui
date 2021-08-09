@@ -2,9 +2,9 @@ import React from "react";
 import {Button, Col, Container, Row} from 'react-bootstrap';
 import {connect} from "react-redux"
 import {getCategory, clearCategories, getStandardCategories} from "../redux/Categories/categories.actions"
-import {CategoriesTableContainer} from "./CategoriesTableComponent";
+import {CategoriesTableContainer} from "./categorization/CategoriesTableComponent";
 import {TextField} from "@material-ui/core";
-import {NewCategoryContainer} from "./NewCategoryComponent";
+import {NewCategoryContainer} from "./categorization/NewCategoryComponent";
 
 class CategorizePageComponent extends React.Component {
 
@@ -72,7 +72,6 @@ class CategorizePageComponent extends React.Component {
             this.eventSource.close();
             console.log("eventsource closed")
         }
-
     }
 
     onSubmit() {
@@ -101,22 +100,30 @@ class CategorizePageComponent extends React.Component {
 
     render() {
         return (
-            <div>
-                <Container style={{marginBottom: "1%"}}>
-                    <Row>
-                        <Col>
-                            <NewCategoryContainer/>
-                        </Col>
-                        <Col>
-                            <Button style={{width: "100%"}} variant="dark" onClick={this.onSubmit} size="sm">
-                                Save standardization
-                            </Button>
-                        </Col>
-                    </Row>
-                </Container>
-                <CategoriesTableContainer addCategory={this.addCategoryWithStandard}/>
-                <Button variant="dark" style={{width: "100%"}} onClick={this.getCategories}>Get categories</Button>
-            </div>
+            <Container style={{marginTop: "2%"}}>
+                <Row>
+                    <Col>
+                        <div>
+                            <Container style={{marginBottom: "1%"}}>
+                                <Row>
+                                    <Col>
+                                        <NewCategoryContainer/>
+                                    </Col>
+                                    <Col>
+                                        <Button style={{width: "100%"}} variant="dark" onClick={this.onSubmit}
+                                                size="sm">
+                                            Save standardization
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Container>
+                            <CategoriesTableContainer addCategory={this.addCategoryWithStandard}/>
+                            <Button variant="dark" style={{width: "100%"}} onClick={this.getCategories}>Get
+                                categories</Button>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 }
@@ -126,6 +133,10 @@ const mapStateToProps = (state) => {
         categories: state.categories.categories,
     }
 }
-const mapDispatchToProps = {getCategory, clearCategories, getStandardCategories};
+const mapDispatchToProps =
+    {
+        getCategory, clearCategories, getStandardCategories
+    }
+;
 
 export const CategorizePageContainer = connect(mapStateToProps, mapDispatchToProps)(CategorizePageComponent);

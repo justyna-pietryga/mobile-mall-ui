@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, Form, Table} from 'react-bootstrap';
 import {connect} from "react-redux"
-import {getCategory, addStandardCategory} from "../redux/Categories/categories.actions"
+import {getCategory, addStandardCategory} from "../../redux/Categories/categories.actions"
 import {StandardCategorySelectorContainer} from "./StandardCategorySelectorComponent";
 import {MenuItem, Select} from "@material-ui/core";
 import {CategoryRowContainer} from "./CategoryRowComponent";

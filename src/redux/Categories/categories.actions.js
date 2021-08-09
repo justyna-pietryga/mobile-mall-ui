@@ -3,7 +3,9 @@ import {
     CLEAR_CATEGORIES,
     GET_STANDARD_CATEGORIES,
     ADD_STANDARD_CATEGORIES,
-    UPDATE_CATEGORY_WITH_STANDARD
+    UPDATE_CATEGORY_WITH_STANDARD,
+    ADD_PRODUCT,
+    CLEAR_PRODUCTS
 } from './categories.types'
 
 export const getCategory = (category) => {
@@ -37,5 +39,18 @@ export const updateCategoryWithStandardInformation = (payload) => {
     return {
         type: UPDATE_CATEGORY_WITH_STANDARD,
         payload: payload
+    }
+}
+
+export const addProduct = (payload) => {
+    return {
+        type: ADD_PRODUCT,
+        payload: payload
+    }
+}
+
+export const clearProducts = () => {
+    return {
+        type: CLEAR_PRODUCTS
     }
 }

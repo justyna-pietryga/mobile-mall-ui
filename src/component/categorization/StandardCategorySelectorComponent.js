@@ -1,7 +1,7 @@
 import React from "react";
 import {Form} from 'react-bootstrap';
 import {connect} from "react-redux"
-import {getCategory} from "../redux/Categories/categories.actions"
+import {getCategory} from "../../redux/Categories/categories.actions"
 import {MenuItem, NativeSelect, Select, Input} from "@material-ui/core";
 
 class StandardCategorySelectorComponent extends React.Component {

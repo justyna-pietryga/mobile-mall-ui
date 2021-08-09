@@ -1,8 +1,8 @@
 import React from "react";
 import {Col, Container, Row, Button} from 'react-bootstrap';
 import {connect} from "react-redux"
-import {addStandardCategory} from "../redux/Categories/categories.actions"
-import {TextField} from "@material-ui/core";
+import {addStandardCategory} from "../../redux/Categories/categories.actions"
+import {Input, TextField} from "@material-ui/core";
 
 class NewCategoryComponent extends React.Component {
 
